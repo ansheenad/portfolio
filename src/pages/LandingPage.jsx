@@ -1,55 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { MdDownload } from 'react-icons/md'; // Using Material Design Icons for Resume
+import { BiCodeAlt } from 'react-icons/bi'; // Using BiIcons for Explore
+
+import './LandingPage.css';
 
 const LandingPage = () => {
+  const [clickedIcon, setClickedIcon] = useState(null);
+
+  const handleClick = (icon) => {
+    setClickedIcon(icon === clickedIcon ? null : icon);
+  };
+
   return (
-    <section style={styles.container}>
-      <h1 style={styles.title}>Welcome to My Portfolio</h1>
-      <p style={styles.subtitle}>
-        Software Developer | Problem Solver | Tech Enthusiast
-      </p>
-      <div style={styles.buttonContainer}>
-        <button style={styles.button} onClick={() => alert('Resume Coming Soon!')}>
-          View Resume
-        </button>
-        <button style={styles.button} onClick={() => alert('Projects Section Below!')}>
-          Explore My Work
-        </button>
+    <section className="landing-container">
+      <h1 className="main-name">ANSHEENA D</h1>
+      <p className="subtitle">Software Developer | MERN Stack Enthusiast | Problem Solver</p>
+      <div className="line-separator"></div>
+      <div className="icons-container">
+        <div
+          className={`icon-circle ${clickedIcon === 'resume' ? 'clicked' : ''}`}
+          onClick={() => handleClick('resume')}
+          data-tooltip="Download Resume" // Tooltip text
+        >
+          <MdDownload size={20} />
+          <span className="icon-text">Resume</span>
+        </div>
+        <a href="your-projects-link" target="_blank" rel="noopener noreferrer">
+          <div
+            className={`icon-circle ${clickedIcon === 'explore' ? 'clicked' : ''}`}
+            onClick={() => handleClick('explore')}
+            data-tooltip="Explore Projects" // Tooltip text
+          >
+            <BiCodeAlt size={20} />
+            <span className="icon-text">Explore More</span>
+          </div>
+        </a>
       </div>
     </section>
   );
-};
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
-    textAlign: 'center',
-    backgroundColor: '#f9f9f9',
-  },
-  title: {
-    fontSize: '3rem',
-    fontWeight: 'bold',
-    marginBottom: '1rem',
-  },
-  subtitle: {
-    fontSize: '1.5rem',
-    marginBottom: '2rem',
-  },
-  buttonContainer: {
-    display: 'flex',
-    gap: '1rem',
-  },
-  button: {
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '5px',
-    backgroundColor: '#333',
-    color: '#fff',
-    cursor: 'pointer',
-  },
 };
 
 export default LandingPage;

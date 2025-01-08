@@ -10,7 +10,9 @@ const Header = () => {
         <span style={styles.lastPart}>.D</span>
       </h1>
       <nav style={styles.nav}>
-        <Link to="/about" style={styles.link}>About</Link>
+        <Link to="/skills" style={styles.link}>Skills</Link>
+        <Link to="/projects" style={styles.link}>Projects</Link>
+        <Link to="/certificates" style={styles.link}>Certificates</Link>
       </nav>
     </header>
   );
@@ -19,13 +21,12 @@ const Header = () => {
 const styles = {
   header: {
     display: 'flex',
-    flexWrap: 'wrap', // Allows wrapping on smaller screens
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 20px',
+    padding: '5px 5px ',
     borderBottom: '1px solid #ddd',
-    backgroundColor: '#f9f9f9',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    backgroundColor: '#FF5349', 
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
   },
   logo: {
     fontSize: '2rem',
@@ -34,25 +35,25 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     animation: 'fadeInLogo 1.5s ease-out',
+    color: '#fff', // Make logo text white to contrast with the background
   },
   firstPart: {
-    color: '#f54291',
+    color: '#fff',
     transform: 'rotateZ(-5deg)',
     transition: 'transform 0.3s ease',
   },
   lastPart: {
-    color: '#42a5f5',
+    color: '#fff',
     transform: 'rotateZ(5deg)',
     transition: 'transform 0.3s ease',
   },
   nav: {
     display: 'flex',
-    flexWrap: 'wrap', // Makes the navigation flexible for small screens
-    gap: '1rem', // Reduced gap for better spacing on small devices
+    gap: '1rem',
   },
   link: {
     textDecoration: 'none',
-    color: '#333',
+    color: '#fff', // White color for the links
     fontSize: '1rem',
     fontWeight: '600',
     transition: 'color 0.3s ease',

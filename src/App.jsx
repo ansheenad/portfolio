@@ -1,21 +1,34 @@
+// SmallHeader.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Header from './components/Header'; // Regular header for LandingPage
+import SmallHeader from './components/SmallHeader'; // Small header for About Page
 import LandingPage from './pages/LandingPage';
-import Projects from './components/Projects';
-import Contact from './pages/Contact';
+import About from './pages/About';
+import Footer from './components/Footer';
 
 const App = () => {
+  const location = useLocation(); // Get the current location (path)
+
   return (
-    <Router>
-      <Header />
+    <div>
+      {/* Render Header only on LandingPage */}
+      {location.pathname === '/' && <Header />}
+      {/* Render SmallHeader only on About Page */}
+      {location.pathname === '/about' && <SmallHeader />}
+
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
-    </Router>
+
+      <Footer />
+    </div>
   );
 };
 
-export default App;
+export default () => (
+  <Router>
+    <App />
+  </Router>
+);

@@ -47,31 +47,34 @@ const Footer = () => {
     <footer style={styles.footer}>
       <div style={styles.container}>
         <div style={styles.column}>
+          {/* Say Hello Button */}
           <button onClick={() => setShowForm(true)} style={styles.button}>Say Hello!</button>
+
+          {/* Social Icons */}
           <div style={styles.socialIcons}>
-            <a href="https://www.instagram.com/yourusername" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaInstagram size={28} />
+            <a href="https://www.instagram.com/ansheena__d" target="_blank" rel="noopener noreferrer" style={styles.icon}>
+              <FaInstagram size={24} />
             </a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaGithub size={28} />
+            <a href="https://github.com/ansheenad" target="_blank" rel="noopener noreferrer" style={styles.icon}>
+              <FaGithub size={24} />
             </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaLinkedin size={28} />
+            <a href="https://linkedin.com/in/ansheena-d-0536081b2" target="_blank" rel="noopener noreferrer" style={styles.icon}>
+              <FaLinkedin size={24} />
             </a>
             <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaFacebook size={28} />
+              <FaFacebook size={24} />
             </a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaTwitter size={28} />
+            <a href="https://twitter.com/ansheena_d" target="_blank" rel="noopener noreferrer" style={styles.icon}>
+              <FaTwitter size={24} />
             </a>
-            <a href="https://discord.com/users/yourusername" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaDiscord size={28} />
+            <a href="https://discord.com/users/ansheena" target="_blank" rel="noopener noreferrer" style={styles.icon}>
+              <FaDiscord size={24} />
             </a>
-            <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaWhatsapp size={28} />
+            <a href="https://wa.me/+962780191310" target="_blank" rel="noopener noreferrer" style={styles.icon}>
+              <FaWhatsapp size={24} />
             </a>
-            <a href="mailto:your-email@example.com" target="_blank" rel="noopener noreferrer" style={styles.icon}>
-              <FaEnvelope size={28} />
+            <a href="mailto:your-ansheenad@gmail.com" target="_blank" rel="noopener noreferrer" style={styles.icon}>
+              <FaEnvelope size={24} />
             </a>
           </div>
         </div>
@@ -83,9 +86,9 @@ const Footer = () => {
           <div style={styles.popupContent}>
             <button onClick={() => setShowForm(false)} style={styles.closeButton}>X</button>
             <form style={styles.form} onSubmit={handleSubmit}>
-            {status && <p style={styles.statusMessage}>{status}</p>}
+              {status && <p style={styles.statusMessage}>{status}</p>}
               <h3 style={styles.formHeading}>Connect with Me</h3>
-              <label>First Name:</label>
+              <label style={styles.label}>First Name:</label>
               <input
                 type="text"
                 name="firstName"
@@ -95,7 +98,7 @@ const Footer = () => {
                 placeholder="Enter your first name"
                 style={styles.input}
               />
-              <label>Last Name:</label>
+              <label style={styles.label}>Last Name:</label>
               <input
                 type="text"
                 name="lastName"
@@ -105,7 +108,7 @@ const Footer = () => {
                 placeholder="Enter your last name"
                 style={styles.input}
               />
-              <label>Email:</label>
+              <label style={styles.label}>Email:</label>
               <input
                 type="email"
                 name="email"
@@ -115,7 +118,7 @@ const Footer = () => {
                 placeholder="Enter your email address"
                 style={styles.input}
               />
-              <label>Message:</label>
+              <label style={styles.label}>Message:</label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -140,18 +143,18 @@ const Footer = () => {
   );
 };
 
+// Styles
 const styles = {
   footer: {
     backgroundColor: '#010100',
     color: '#fff',
-    padding: '40px 0',
+    padding: '20px 0',
     textAlign: 'center',
-    marginTop: '40px',
   },
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr',
-    gap: '40px',
+    gap: '20px',
     justifyItems: 'center',
     alignItems: 'center',
   },
@@ -164,26 +167,26 @@ const styles = {
     backgroundColor: '#FC2E20',
     color: '#fff',
     border: 'none',
-    padding: '15px 30px',
+    padding: '10px 20px',
     cursor: 'pointer',
     borderRadius: '5px',
-    marginTop: '10px',
-    marginBottom: '10px',
-    fontSize: '18px',
+    fontSize: '16px',
     fontWeight: 'bold',
     transition: 'background-color 0.3s ease',
   },
   socialIcons: {
     display: 'flex',
-    flexWrap: 'wrap',
     gap: '1rem',
     justifyContent: 'center',
     marginTop: '10px',
   },
   icon: {
-    color: 'inherit',
-    transition: 'color 0.3s ease',
+    color: '#fff',
     fontSize: '24px',
+    transition: 'color 0.3s ease',
+  },
+  iconHover: {
+    color: '#FC2E20', // Highlight color on hover
   },
   overlay: {
     position: 'fixed',
@@ -202,7 +205,7 @@ const styles = {
     borderRadius: '8px',
     width: '90%',
     maxWidth: '400px',
-    padding: '20px',
+    padding: '10px',
     boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.3)',
     position: 'relative',
     textAlign: 'center',
@@ -223,12 +226,17 @@ const styles = {
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '15px',
+    gap: '10px',
   },
   formHeading: {
     color: '#FC2E20',
     fontWeight: 'bold',
     marginBottom: '10px',
+  },
+  label: {
+    textAlign: 'left',
+    color: '#333',
+    fontWeight: 'bold',
   },
   input: {
     padding: '10px',
@@ -254,14 +262,16 @@ const styles = {
     fontWeight: 'bold',
     transition: 'background-color 0.3s ease',
   },
-//   statusMessage: {
-//     color: status === 'Message sent successfully!' ? '#28a745' : '#dc3545', // Green for success, red for failure
-//     marginTop: '10px',
-//     fontSize: '14px',
-//     fontWeight: 'bold',
-//   },
+  statusMessage: {
+    color: '#28a745', // Green for success
+    marginTop: '10px',
+    fontSize: '14px',
+    fontWeight: 'bold',
+  },
   copyright: {
     marginTop: '20px',
+    fontSize: '14px',
+    color: '#888',
   },
 };
 

@@ -1,16 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Header = () => {
   return (
     <header style={styles.header}>
-      <h1 style={styles.logo}>
+      <motion.h1 
+        style={styles.logo}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <span style={styles.firstPart}>A</span>
         NSHEENA
         <span style={styles.lastPart}>.D</span>
-      </h1>
+      </motion.h1>
       <nav style={styles.nav}>
-        <Link to="/about" style={styles.link}>About</Link>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Link to="/about" style={styles.link}>
+            <span style={styles.linkAccent}>//</span> About
+          </Link>
+        </motion.div>
       </nav>
     </header>
   );
@@ -19,44 +32,42 @@ const Header = () => {
 const styles = {
   header: {
     display: 'flex',
-    flexWrap: 'wrap', // Allows wrapping on smaller screens
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 20px',
-    borderBottom: '1px solid #ddd',
-    backgroundColor: '#f9f9f9',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    padding: '1rem 5%',
+    backgroundColor: 'rgba(255,255,255,0.95)',
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'blur(8px)',
+    position: 'sticky',
+    top: 0,
+    zIndex: 1000,
   },
   logo: {
-    fontSize: '2rem',
+    fontSize: '2.5rem',
     fontWeight: 'bold',
     fontFamily: "'Bebas Neue', sans-serif",
-    display: 'inline-flex',
-    alignItems: 'center',
-    animation: 'fadeInLogo 1.5s ease-out',
-  },
-  firstPart: {
-    color: '#f54291',
-    transform: 'rotateZ(-5deg)',
-    transition: 'transform 0.3s ease',
-  },
-  lastPart: {
-    color: '#42a5f5',
-    transform: 'rotateZ(5deg)',
-    transition: 'transform 0.3s ease',
+    background: 'linear-gradient(45deg, #FC2E20 30%, #ff6b6b 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
   },
   nav: {
     display: 'flex',
-    flexWrap: 'wrap', // Makes the navigation flexible for small screens
-    gap: '1rem', // Reduced gap for better spacing on small devices
+    gap: '2rem',
   },
   link: {
     textDecoration: 'none',
     color: '#333',
-    fontSize: '1rem',
+    fontSize: '1.1rem',
     fontWeight: '600',
-    transition: 'color 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    transition: 'all 0.3s ease',
   },
+  linkAccent: {
+    color: '#FC2E20',
+    fontWeight: '700',
+  }
 };
 
 export default Header;

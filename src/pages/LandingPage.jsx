@@ -1,42 +1,74 @@
-import React, { useState } from 'react';
-import { MdDownload } from 'react-icons/md'; // Using Material Design Icons for Resume
-import { BiCodeAlt } from 'react-icons/bi'; // Using BiIcons for Explore
-
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FiDownload, FiFolder } from 'react-icons/fi';
+import { Link } from "react-router-dom";
 import './LandingPage.css';
 
 const LandingPage = () => {
-  const [clickedIcon, setClickedIcon] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const handleClick = (icon) => {
-    setClickedIcon(icon === clickedIcon ? null : icon);
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: -50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
   };
 
   return (
-    <section className="landing-container">
-      <h1 className="main-name">ANSHEENA D</h1>
-      <p className="subtitle">Software Developer | MERN Stack Enthusiast | Problem Solver</p>
-      <div className="line-separator"></div>
-      <div className="icons-container">
-        <div
-          className={`icon-circle ${clickedIcon === 'resume' ? 'clicked' : ''}`}
-          onClick={() => handleClick('resume')}
-          data-tooltip="Download Resume" // Tooltip text
+    <div className="landing-container">
+      <motion.div
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+        variants={containerVariants}
+        className="content-container"
+      >
+        <motion.h1 
+          variants={itemVariants}
+          className="main-name"
         >
-          <MdDownload size={20} />
-          <span className="icon-text">Resume</span>
-        </div>
-        <a href="your-projects-link" target="_blank" rel="noopener noreferrer">
-          <div
-            className={`icon-circle ${clickedIcon === 'explore' ? 'clicked' : ''}`}
-            onClick={() => handleClick('explore')}
-            data-tooltip="Explore Projects" // Tooltip text
-          >
-            <BiCodeAlt size={20} />
-            <span className="icon-text">Explore More</span>
-          </div>
-        </a>
-      </div>
-    </section>
+          ANSHEENA D
+        </motion.h1>
+        
+        <motion.p 
+          variants={itemVariants}
+          className="sub-text"
+        >
+          Software Developer | MERN Stack Enthusiast | Problem Solver
+        </motion.p>
+        
+        <motion.div 
+          variants={itemVariants}
+          className="icon-group"
+        >
+          <a href="/Ansheena_resume.pdf" download className="icon-container">
+            <div className="icon-circle">
+              <FiDownload className="icon" />
+            </div>
+          </a>
+          
+          {/* Navigate to About Page and scroll to Projects Section */}
+          <Link to="/about#projects" className="icon-container">
+            <div className="icon-circle">
+              <FiFolder className="icon" />
+            </div>
+          </Link>
+        </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

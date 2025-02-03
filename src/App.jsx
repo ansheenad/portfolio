@@ -1,10 +1,9 @@
-// SmallHeader.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Header from './components/Header'; // Regular header for LandingPage
+import Header from './components/Header'; // Main header for LandingPage
 import SmallHeader from './components/SmallHeader'; // Small header for About Page
 import LandingPage from './pages/LandingPage';
-import About from './pages/About';
+import About from './components/About';
 import Footer from './components/Footer';
 
 const App = () => {

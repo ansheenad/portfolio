@@ -26,11 +26,8 @@ const About = () => {
         <h2 style={styles.header}>About Me</h2>
         <div style={styles.container}>
           <div style={styles.photoContainer}>
-            <img
-              src={process.env.PUBLIC_URL + "/PXL_20250105_072632695~4.jpg"}  
-              alt="Ansheena D"
-              style={styles.photo}
-            />
+          <img src={`${process.env.PUBLIC_URL}/assets/PXL_20250105_072632695~4.jpg`} alt="Ansheena D" />
+
           </div>
           <div style={styles.descriptionContainer}>
             <p style={styles.description}>

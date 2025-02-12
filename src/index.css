@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animations */
 @keyframes slideDown {
   from {
     transform: translateY(-50px);
@@ -18,14 +23,37 @@
   }
 }
 
+/* Icon Effects */
+.iconItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
 .iconItem:hover .icon {
   transform: scale(1.2);
 }
 
 .iconItem:hover .iconText {
   opacity: 1;
+  transform: translateY(0);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Hidden by Default */
+.iconText {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}

@@ -50,23 +50,25 @@ const LandingPage = () => {
           Software Developer | MERN Stack Enthusiast | Problem Solver
         </motion.p>
         
-        <motion.div 
-          variants={itemVariants}
-          className="icon-group"
-        >
-          <a href="/Ansheena_resume.pdf" download className="icon-container">
-            <div className="icon-circle">
-              <FiDownload className="icon" />
-            </div>
-          </a>
-          
-          {/* Navigate to About Page and scroll to Projects Section */}
-          <Link to="/about#projects" className="icon-container">
-            <div className="icon-circle">
-              <FiFolder className="icon" />
-            </div>
-          </Link>
-        </motion.div>
+        <motion.div variants={itemVariants} className="icon-group">
+  <div className="icon-wrapper">
+    <a href="/assets/Ansheena_resume.pdf" download className="icon-container">
+      <div className="icon-circle">
+        <FiDownload className="icon" />
+      </div>
+      <span className="icon-label">Download Resume</span>
+    </a>
+  </div>
+
+  <div className="icon-wrapper">
+    <Link to="/about#projects" className="icon-container">
+      <div className="icon-circle">
+        <FiFolder className="icon" />
+      </div>
+      <span className="icon-label">View Projects</span>
+    </Link>
+  </div>
+</motion.div>
       </motion.div>
     </div>
   );

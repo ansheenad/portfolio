@@ -25,7 +25,7 @@ const About = () => {
         <div style={styles.container}>
           <div style={styles.photoContainer}>
             <img
-              src="src/assets/PXL_20250105_072632695~4.jpg"
+              src="/assets/PXL_20250105_072632695~4.jpg"  
               alt="Ansheena D"
               style={styles.photo}
             />

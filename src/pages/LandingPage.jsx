@@ -36,39 +36,42 @@ const LandingPage = () => {
         variants={containerVariants}
         className="content-container"
       >
-        <motion.h1 
-          variants={itemVariants}
-          className="main-name"
-        >
+        <motion.h1 variants={itemVariants} className="main-name">
           ANSHEENA D
         </motion.h1>
         
-        <motion.p 
-          variants={itemVariants}
-          className="sub-text"
-        >
+        <motion.p variants={itemVariants} className="sub-text">
           Software Developer | MERN Stack Enthusiast | Problem Solver
         </motion.p>
         
         <motion.div variants={itemVariants} className="icon-group">
-  <div className="icon-wrapper">
-    <a href="/assets/Ansheena_resume.pdf" download className="icon-container">
-      <div className="icon-circle">
-        <FiDownload className="icon" />
-      </div>
-      <span className="icon-label">Download Resume</span>
-    </a>
-  </div>
+          {/* Download Resume Button */}
+          <motion.a
+            href="/Ansheena_resume(1).pdf" 
+            download 
+            className="icon-container"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <div className="icon-circle">
+              <FiDownload className="icon" />
+            </div>
+            <span className="icon-label">Download Resume</span>
+          </motion.a>
 
-  <div className="icon-wrapper">
-    <Link to="/about#projects" className="icon-container">
-      <div className="icon-circle">
-        <FiFolder className="icon" />
-      </div>
-      <span className="icon-label">View Projects</span>
-    </Link>
-  </div>
-</motion.div>
+          {/* View Projects Button */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Link to="/about#projects" className="icon-container">
+              <div className="icon-circle">
+                <FiFolder className="icon" />
+              </div>
+              <span className="icon-label">View Projects</span>
+            </Link>
+          </motion.div>
+        </motion.div>
       </motion.div>
     </div>
   );

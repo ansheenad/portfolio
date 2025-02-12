@@ -1,19 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import SmallHeader from './components/SmallHeader';
 import LandingPage from './pages/LandingPage';
 import About from './components/About';
 import Footer from './components/Footer';
 
-const App = () => {
+const AppContent = () => {
   const location = useLocation();
 
   return (
     <div>
-      {/* Render Header only on LandingPage */}
+      {/* Show Header only on LandingPage */}
       {location.pathname === '/' && <Header />}
-      {/* Render SmallHeader only on About Page */}
+      
+      {/* Show SmallHeader only on About Page */}
       {location.pathname === '/about' && <SmallHeader />}
 
       <Routes>
@@ -26,8 +27,10 @@ const App = () => {
   );
 };
 
-export default () => (
-  <Router basename="/portfolio"> {/* Set basename to '/portfolio' for production */}
-    <App />
+const App = () => (
+  <Router basename="/portfolio"> {/* GitHub Pages Fix */}
+    <AppContent />
   </Router>
 );
+
+export default App;

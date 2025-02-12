@@ -7,7 +7,14 @@ import Certificates from './Certificates';
 const About = () => {
   const location = useLocation();
 
-  // Smooth scrolling to sections
+  // 🔄 Fix for GitHub Pages: Redirect to index.html on reload
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.history.replaceState({}, '', '/about#about');
+    }
+  }, []);
+
+  // 🚀 Smooth scrolling to sections
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {
@@ -15,7 +22,7 @@ const About = () => {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 100); // Small delay to ensure smooth scrolling
+      }, 100); // Delay to ensure rendering is complete
     }
   }, [location]);
 
@@ -26,8 +33,8 @@ const About = () => {
         <h2 style={styles.header}>About Me</h2>
         <div style={styles.container}>
           <div style={styles.photoContainer}>
-          <img src={`${process.env.PUBLIC_URL}/assets/PXL_20250105_072632695~4.jpg`} alt="Ansheena D" />
-
+            {/* ✅ Fixed Image Path */}
+            <img src="/assets/PXL_20250105_072632695~4.jpg" alt="Ansheena D" style={styles.photo} />
           </div>
           <div style={styles.descriptionContainer}>
             <p style={styles.description}>
@@ -64,6 +71,7 @@ const About = () => {
   );
 };
 
+// 🔥 CSS Styling
 const styles = {
   aboutSection: {
     padding: '60px 20px',
@@ -79,7 +87,7 @@ const styles = {
     fontSize: '36px',
     fontWeight: 'bold',
     marginBottom: '20px',
-    color: '#FC2E20', // Red accent
+    color: '#FC2E20',
   },
   container: {
     display: 'flex',
@@ -101,8 +109,8 @@ const styles = {
     height: '200px',
     borderRadius: '50%',
     objectFit: 'cover',
-    border: '4px solid #FC2E20', // Red accent
-    boxShadow: '0 4px 15px rgba(252, 46, 32, 0.3)', // Subtle shadow
+    border: '4px solid #FC2E20',
+    boxShadow: '0 4px 15px rgba(252, 46, 32, 0.3)',
   },
   descriptionContainer: {
     flex: 2,

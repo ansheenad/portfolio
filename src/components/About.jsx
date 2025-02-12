@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SkillTable from './SkillTable';
 import Projects from './Projects';
@@ -6,16 +6,19 @@ import Certificates from './Certificates';
 
 const About = () => {
   const location = useLocation();
+  const [imageLoaded, setImageLoaded] = useState(true);
 
   // 🚀 Smooth scrolling to sections
   useEffect(() => {
     if (location.hash) {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         const element = document.querySelector(location.hash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 100); // Delay to ensure rendering is complete
+      }, 100); // Delay ensures rendering is complete
+
+      return () => clearTimeout(timeout); // Cleanup function
     }
   }, [location]);
 
@@ -26,8 +29,16 @@ const About = () => {
         <h2 style={styles.header}>About Me</h2>
         <div style={styles.container}>
           <div style={styles.photoContainer}>
-            {/* ✅ Corrected Image Path */}
-            <img src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="Ansheena D" style={styles.photo} />
+            {imageLoaded ? (
+              <img 
+                src="/profile.jpg" 
+                alt="Ansheena D" 
+                style={styles.photo} 
+                onError={() => setImageLoaded(false)} // Handle broken image
+              />
+            ) : (
+              <p style={styles.imageError}>Profile image not available</p> // Fallback text
+            )}
           </div>
           <div style={styles.descriptionContainer}>
             <p style={styles.description}>
@@ -62,6 +73,18 @@ const About = () => {
       </section>
     </section>
   );
+};
+
+const styles = {
+  aboutSection: { padding: '50px', textAlign: 'center' },
+  header: { fontSize: '2rem', marginBottom: '20px' },
+  container: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' },
+  photoContainer: { width: '150px', height: '150px', borderRadius: '50%', overflow: 'hidden' },
+  photo: { width: '100%', height: '100%', objectFit: 'cover' },
+  descriptionContainer: { maxWidth: '600px', textAlign: 'left' },
+  description: { fontSize: '1rem', lineHeight: '1.5' },
+  imageError: { color: 'red', fontStyle: 'italic' },
+  section: { padding: '50px', textAlign: 'center' },
 };
 
 export default About;

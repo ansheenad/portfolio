@@ -50,6 +50,7 @@ const LandingPage = () => {
             href="/Ansheena_resume(1).pdf" 
             download 
             className="icon-container"
+            data-tooltip="Download resume"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -64,7 +65,7 @@ const LandingPage = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Link to="/about#projects" className="icon-container">
+            <Link to="/about#projects" className="icon-container" data-tooltip="View Projects">
               <div className="icon-circle">
                 <FiFolder className="icon" />
               </div>

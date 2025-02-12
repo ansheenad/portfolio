@@ -11,10 +11,7 @@ const AppContent = () => {
 
   return (
     <div>
-      {/* Show Header only on LandingPage */}
       {location.pathname === '/' && <Header />}
-      
-      {/* Show SmallHeader only on About Page */}
       {location.pathname === '/about' && <SmallHeader />}
 
       <Routes>
@@ -28,7 +25,7 @@ const AppContent = () => {
 };
 
 const App = () => (
-  <Router basename="/portfolio"> {/* GitHub Pages Fix */}
+  <Router>
     <AppContent />
   </Router>
 );

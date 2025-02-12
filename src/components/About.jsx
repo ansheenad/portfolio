@@ -7,13 +7,15 @@ import Certificates from './Certificates';
 const About = () => {
   const location = useLocation();
 
-  // Scroll to the targeted section when navigating
+  // Smooth scrolling to sections
   useEffect(() => {
     if (location.hash) {
-      const element = document.querySelector(location.hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100); // Small delay to ensure smooth scrolling
     }
   }, [location]);
 
@@ -25,7 +27,7 @@ const About = () => {
         <div style={styles.container}>
           <div style={styles.photoContainer}>
             <img
-              src="/assets/PXL_20250105_072632695~4.jpg"  
+              src={process.env.PUBLIC_URL + "/PXL_20250105_072632695~4.jpg"}  
               alt="Ansheena D"
               style={styles.photo}
             />

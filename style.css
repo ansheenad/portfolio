@@ -41,7 +41,7 @@
   
   /* ===== Header & Navigation ===== */
   .header {
-    background: var(--card-background);
+  background: var(--card-background);
   box-shadow: var(--card-shadow);
   padding: 1.5rem 5%;
   position: sticky; /* Sticky header */
@@ -161,8 +161,8 @@
   
   /* ===== Sections ===== */
   .section {
-    padding: 80px 0;
-    margin-top: 100px;
+    padding: 50px 0;
+    margin-top: 40px;
   }
   
   .section h2 {
@@ -186,20 +186,18 @@
   }
   
   /* ===== About Section ===== */
-  .about-section {
-    text-align: center;
-  }
   
   .description-container {
     max-width: 800px;
     margin: 0 auto;
+    text-align: justify;
   }
   
   .description {
     font-size: 1.1rem;
     line-height: 1.8;
     color: var(--text-color);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   /* ===== Skills Section ===== */
@@ -337,7 +335,7 @@
   .project-card {
     background: var(--card-background);
     border-radius: var(--border-radius);
-    padding: 25px;
+    padding: 20px;
     box-shadow: var(--card-shadow);
     transition: all 0.3s ease;
     border: 1px solid #e0e0e0; /* Added subtle border for better definition */
